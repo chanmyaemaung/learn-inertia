@@ -65,7 +65,7 @@ const createPost = () => {
                 </form>
 
                 <div class="py-3 flex justify-center">
-                    <Link preserve-scroll :only="['posts']" :href="route('posts.index')"
+                    <Link preserve-state preserve-scroll :only="['posts']" :href="route('posts.index')"
                         class="text-sm text-indigo-700">
                     Refresh posts
                     </Link>
