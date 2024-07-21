@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Link, router } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import { Head, useForm } from '@inertiajs/vue3';
 
 
@@ -12,8 +12,10 @@ defineProps({
     now: String,
 })
 
+const { props: { greeting } } = usePage();
+
 const form = useForm({
-    content: ''
+    content: greeting,
 })
 
 const createPost = () => {
