@@ -21,6 +21,7 @@ const createPost = () => {
         }
     });
 }
+
 </script>
 
 <template>
@@ -38,7 +39,8 @@ const createPost = () => {
                 <form @submit.prevent="createPost" autocomplete="off"
                     class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <label for="body" class="sr-only">Body</label>
-                    <textarea v-model="form.content" name="content" id="content" cols="30" rows="5"
+                    <textarea v-model="form.content" v-on:focus="form.clearErrors('content')" name="content"
+                        id="content" cols="30" rows="5"
                         class="border-gray-300 focus:border-indigo-500  dark:bg-gray-900 text-white focus:ring-indigo-500 rounded-md shadow-sm w-full"></textarea>
 
                     <p v-if="form.errors.content" class="text-red-500 text-sm">
