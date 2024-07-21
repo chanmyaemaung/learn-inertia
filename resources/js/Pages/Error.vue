@@ -33,7 +33,7 @@ const description = computed(() => {
     <Head :title="title" />
 
     <GuestLayout>
-        <div class="font-medium text-red-600 text-center">
+        <div class="font-medium text-indigo-600 text-center">
             {{ description }}
         </div>
     </GuestLayout>
