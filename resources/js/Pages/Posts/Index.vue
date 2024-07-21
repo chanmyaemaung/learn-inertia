@@ -47,7 +47,8 @@ const createPost = () => {
                         {{ form.errors.content }}
                     </p>
                     <button type="submit" :disabled="form.processing"
-                        class="mt-2 bg-gray-700 px-4 py-2 rounded-md font-medium text-white">
+                        class="mt-2 bg-gray-700 px-4 py-2 rounded-md font-medium text-white"
+                        :class="{ 'opacity-50': form.processing }">
                         Post
                     </button>
                 </form>
