@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Chen Lay'),
+
+    'custom_error_pages_enabled' => env('CUSTOM_ERROR_PAGES_ENABLED', false),
 
     /*
     |--------------------------------------------------------------------------
