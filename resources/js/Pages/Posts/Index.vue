@@ -21,7 +21,8 @@ watch(() => page.props.message, (message) => {
     }
 });
 
-const form = useForm({
+// The state of the form
+const form = useForm("StorePost", {
     content: "",
 });
 
