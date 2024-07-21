@@ -37,6 +37,10 @@ const createPost = () => {
                     <label for="body" class="sr-only">Body</label>
                     <textarea v-model="form.content" name="content" id="content" cols="30" rows="5"
                         class="border-gray-300 focus:border-indigo-500  dark:bg-gray-900 text-white focus:ring-indigo-500 rounded-md shadow-sm w-full"></textarea>
+
+                    <p v-if="form.errors.content" class="text-red-500 text-sm">
+                        {{ form.errors.content }}
+                    </p>
                     <button type="submit" :disabled="form.processing"
                         class="mt-2 bg-gray-700 px-4 py-2 rounded-md font-medium text-white">
                         Post
