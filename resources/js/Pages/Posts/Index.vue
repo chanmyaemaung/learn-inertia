@@ -13,21 +13,27 @@ defineProps({
 const form = useForm({
     content: ''
 })
+
+const createPost = () => {
+    form.post(route('posts.store'));
+    form.reset();
+}
 </script>
 
 <template>
 
-    <Head title="Posts" />
+    <Head title="Comments" />
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Posts</h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Comments</h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-3xl mx-auto sm:px-6 lg:px-8 space-y-3">
 
-                <form autocomplete="off" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <form @submit.prevent="createPost" autocomplete="off"
+                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <label for="body" class="sr-only">Body</label>
                     <textarea v-model="form.content" name="content" id="content" cols="30" rows="5"
                         class="border-gray-300 focus:border-indigo-500  dark:bg-gray-900 text-white focus:ring-indigo-500 rounded-md shadow-sm w-full"></textarea>
