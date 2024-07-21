@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
 
@@ -35,7 +36,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'message' => $request->session()->get('message'),
+            'message' => collect(Arr::only($request->session()->all(), ['success', 'error', 'warning', 'info']))->mapWithKeys(fn($content, $type) => ['type' => $type, 'content' => $content])->toArray(),
             'ziggy' => fn() => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),

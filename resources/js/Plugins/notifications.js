@@ -9,7 +9,7 @@ export const notifications = () => {
     router.on('finish', () => {
         const message = page.props?.message;
 
-        if(message) {
+        if(message.content) {
             toast(message.content, {
                 type: message.type,
             });
