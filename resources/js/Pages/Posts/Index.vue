@@ -1,8 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
-import { watch } from 'vue';
-import { useToast } from 'vue-toastification';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 
 
 defineProps({
@@ -11,15 +9,6 @@ defineProps({
         required: true
     },
     can: Object,
-});
-
-const page = usePage();
-const toast = useToast();
-
-watch(() => page.props.message, (message) => {
-    if (message) {
-        toast(message.content, { type: 'success' });
-    }
 });
 
 // The state of the form
