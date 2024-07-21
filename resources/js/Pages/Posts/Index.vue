@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { router } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 import { Head, useForm } from '@inertiajs/vue3';
 
 
@@ -23,14 +23,6 @@ const createPost = () => {
         }
     });
 }
-
-const refreshPosts = () => {
-    router.get(route('posts.index'), {}, {
-        only: ['posts'],
-        preserveScroll: true,
-    });
-}
-
 </script>
 
 <template>
@@ -64,9 +56,10 @@ const refreshPosts = () => {
                 {{ now }}
 
                 <div class="py-3 flex justify-center">
-                    <button @click="refreshPosts" class="text-sm text-indigo-700" type="button">
-                        Refresh posts
-                    </button>
+                    <Link preserve-scroll :only="['posts']" :href="route('posts.index')"
+                        class="text-sm text-indigo-700">
+                    Refresh posts
+                    </Link>
                 </div>
 
                 <div v-for="post in posts" :key="post.id">
