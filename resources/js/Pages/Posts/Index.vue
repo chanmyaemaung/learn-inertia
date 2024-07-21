@@ -1,5 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { router } from '@inertiajs/vue3';
 import { Head, useForm } from '@inertiajs/vue3';
 
 
@@ -7,7 +8,8 @@ defineProps({
     posts: {
         type: Array,
         required: true
-    }
+    },
+    now: String,
 })
 
 const form = useForm({
@@ -19,6 +21,13 @@ const createPost = () => {
         onSuccess: () => {
             form.reset();
         }
+    });
+}
+
+const refreshPosts = () => {
+    router.get(route('posts.index'), {}, {
+        only: ['posts'],
+        preserveScroll: true,
     });
 }
 
@@ -35,7 +44,6 @@ const createPost = () => {
 
         <div class="py-12">
             <div class="max-w-3xl mx-auto sm:px-6 lg:px-8 space-y-3">
-
                 <form @submit.prevent="createPost" autocomplete="off"
                     class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <label for="body" class="sr-only">Body</label>
@@ -52,6 +60,14 @@ const createPost = () => {
                         Post
                     </button>
                 </form>
+
+                {{ now }}
+
+                <div class="py-3 flex justify-center">
+                    <button @click="refreshPosts" class="text-sm text-indigo-700" type="button">
+                        Refresh posts
+                    </button>
+                </div>
 
                 <div v-for="post in posts" :key="post.id">
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
