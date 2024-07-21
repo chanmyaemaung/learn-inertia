@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      vue-toastification:
+        specifier: 2.0.0-rc.5
+        version: 2.0.0-rc.5(vue@3.4.33)
     devDependencies:
       '@inertiajs/vue3':
         specifier: ^1.0.0
@@ -941,6 +945,11 @@ packages:
       terser:
         optional: true
 
+  vue-toastification@2.0.0-rc.5:
+    resolution: {integrity: sha512-q73e5jy6gucEO/U+P48hqX+/qyXDozAGmaGgLFm5tXX4wJBcVsnGp4e/iJqlm9xzHETYOilUuwOUje2Qg1JdwA==}
+    peerDependencies:
+      vue: ^3.0.2
+
   vue@3.4.33:
     resolution: {integrity: sha512-VdMCWQOummbhctl4QFMcW6eNtXHsFyDlX60O/tsSQuCcuDOnJ1qPOhhVla65Niece7xq/P2zyZReIO5mP+LGTQ==}
     peerDependencies:
@@ -1788,6 +1797,10 @@ snapshots:
       rollup: 4.19.0
     optionalDependencies:
       fsevents: 2.3.3
+
+  vue-toastification@2.0.0-rc.5(vue@3.4.33):
+    dependencies:
+      vue: 3.4.33
 
   vue@3.4.33:
     dependencies:

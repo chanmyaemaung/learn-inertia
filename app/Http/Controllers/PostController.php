@@ -15,7 +15,6 @@ class PostController extends Controller
 
         return inertia()->render("Posts/Index", [
             "posts" => PostResource::collection($posts),
-            'now' => now(),
         ]);
     }
 

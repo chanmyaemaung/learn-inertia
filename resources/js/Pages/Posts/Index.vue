@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Link, usePage } from '@inertiajs/vue3';
-import { Head, useForm } from '@inertiajs/vue3';
+import { Head, Link, useForm } from '@inertiajs/vue3';
+import { useToast } from 'vue-toastification';
 
 
 defineProps({
@@ -12,16 +12,17 @@ defineProps({
     now: String,
 })
 
-const { props: { greeting } } = usePage();
+const toast = useToast();
 
 const form = useForm({
-    content: greeting,
+    content: "",
 })
 
 const createPost = () => {
     form.post(route('posts.store'), {
         onSuccess: () => {
             form.reset();
+            toast.success('Post created successfully');
         }
     });
 }
@@ -54,8 +55,6 @@ const createPost = () => {
                         Post
                     </button>
                 </form>
-
-                {{ now }}
 
                 <div class="py-3 flex justify-center">
                     <Link preserve-scroll :only="['posts']" :href="route('posts.index')"
