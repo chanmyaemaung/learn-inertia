@@ -15,8 +15,11 @@ const form = useForm({
 })
 
 const createPost = () => {
-    form.post(route('posts.store'));
-    form.reset();
+    form.post(route('posts.store'), {
+        onSuccess: () => {
+            form.reset();
+        }
+    });
 }
 </script>
 
