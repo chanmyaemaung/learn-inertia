@@ -10,6 +10,7 @@ defineProps({
         type: Array,
         required: true
     },
+    can: Object,
 });
 
 const page = usePage();
@@ -47,7 +48,7 @@ const createPost = () => {
 
         <div class="py-12">
             <div class="max-w-3xl mx-auto sm:px-6 lg:px-8 space-y-3">
-                <form @submit.prevent="createPost" autocomplete="off"
+                <form @submit.prevent="createPost" v-if="can.post_create" autocomplete="off"
                     class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <label for="body" class="sr-only">Body</label>
                     <textarea v-model="form.content" v-on:focus="form.clearErrors('content')" name="content"
